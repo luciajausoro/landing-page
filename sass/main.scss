@@ -1,0 +1,154 @@
+@import "./reset", "./variables", "./maps";
+
+nav {
+    box-shadow: $shadow;
+}
+
+.anchor {
+    @include anchorFix;
+}
+
+.header {
+    padding: 15px 50px;
+}
+
+.nav__item {
+    font-size: 1.2rem;
+    margin: 0px 10px;
+}
+
+/* CAROUSEL */
+.carousel__item {
+    height: 90vh;
+    width: 100%;
+
+    &:before {
+        @include carouselOverlay;
+    }
+
+    #slide-1 {
+        @include carouselFit;
+    }
+
+    #slide-2 {
+        @extend #slide-1 ;
+        object-position: 20% 30%;
+    }
+
+    #slide-3 {
+        @extend #slide-1 ;
+        object-position: 50% 50%;
+        }
+    }
+
+.carousel-caption {
+    margin-bottom: 50px;
+    width: auto;
+}
+    
+.carousel__button {
+    margin-top: 25px;
+}
+
+/* GALLERY */
+
+.fact-container {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.fact {
+    position: relative;
+    height: auto;
+    
+    &__image {
+        @include factFit;
+    }
+
+    &__text {
+        @include textOverlay;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &::before {
+            @include factOverlay
+        }
+
+        &:hover::before {
+            @include factOverlay;
+            opacity: 0.5;
+        }
+    }
+}
+
+/* CONTACT */
+.contact__form {
+    @include contactCard;
+}
+
+textarea {
+    resize: none;
+}
+
+/* FOOTER */
+
+footer {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sm-button {
+    @include roundButton;
+    margin: auto 5px;
+
+    &:hover {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        background: #fff;
+    }
+
+    &.youtube {
+        background: map-get($smcolor, youtube) ;
+
+        &:hover {
+            @include buttonHover;
+            color: map-get($smcolor, youtube);
+            border-color: map-get($smcolor, youtube);
+        }
+    }
+
+    &.instagram {
+        background: map-get($smcolor, instagram);
+
+        &:hover {
+            @extend .youtube:hover;
+            color: map-get($smcolor, instagram);
+            border-color: map-get($smcolor, instagram);
+
+        }
+    }
+
+    &.twitter {
+        background: map-get($smcolor, twitter);
+
+        &:hover {
+            @extend .youtube:hover;
+            color: map-get($smcolor, twitter);
+            border-color: map-get($smcolor, twitter);
+
+        }
+    }
+}
+
+.footer__text {
+    color: #f2f2f2;
+}
